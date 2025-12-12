@@ -1,0 +1,19 @@
+# Node modules (massive — must be ignored)
+node_modules
+
+# Git metadata
+.git
+.gitignore
+
+# Docker configs
+Dockerfile
+Dockerfile.dev
+docker-compose.yml
+
+# Project documentation (large GIFs, videos, screenshots)
+docs/
+*.gif
+*.mp4
+*.png
+*.jpg
+*.jpeg
