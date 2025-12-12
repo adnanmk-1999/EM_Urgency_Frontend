@@ -1,0 +1,11 @@
+services:
+  frontend-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "${PORT}:${PORT}"
+    stdin_open: true
