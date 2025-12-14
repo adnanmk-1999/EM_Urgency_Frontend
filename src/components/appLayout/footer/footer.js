@@ -19,12 +19,12 @@ const FooterPage = () => {
             </MDBCol>
             <MDBCol md="6" className="socialIcons">
 
-              <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="fa fa-facebook"> </a>&nbsp;&nbsp;
-              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="fa fa-instagram"> </a>&nbsp;&nbsp;
-              <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" class="fa fa-twitter"> </a>&nbsp;&nbsp;
-              <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="fa fa-linkedin"> </a>&nbsp;&nbsp;
-              <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="fa fa-youtube"> </a>&nbsp;&nbsp;
-              <a href="https://in.pinterest.com/" target="_blank" rel="noopener noreferrer" class="fa fa-pinterest"> </a>
+              <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="fa fa-facebook"> </a>&nbsp;&nbsp;
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="fa fa-instagram"> </a>&nbsp;&nbsp;
+              <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="fa fa-twitter"> </a>&nbsp;&nbsp;
+              <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="fa fa-linkedin"> </a>&nbsp;&nbsp;
+              <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className="fa fa-youtube"> </a>&nbsp;&nbsp;
+              <a href="https://in.pinterest.com/" target="_blank" rel="noopener noreferrer" className="fa fa-pinterest"> </a>
 
             </MDBCol>
           </MDBRow>

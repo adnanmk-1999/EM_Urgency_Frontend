@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MaterialTable from 'material-table'
-import { AddIcon } from '@material-ui/icons/Add';
+import AddIcon from '@material-ui/icons/Add';
 import RespondBox from './components/respondBox';
 import axios from 'axios';
 import axiosConfig from '../../helpers/axiosConfig';
