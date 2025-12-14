@@ -24,11 +24,12 @@ function AlertTable() {
   //Get alerts 
   useEffect(() => {
     axiosInstance
-      .get("/admin/alert")
+      .get("http://localhost:4000/admin/alert")
       .then((response) => {
         setTableData(response.data);
       })
-      .catch(() => {
+      .catch((e) => {
+        console.log(e)
         alert("Session Timed out login again");
         localStorage.clear();
         window.location = "/login";
@@ -83,7 +84,7 @@ function AlertTable() {
     },
     {
       title: "Sent Status", field: "statusName",
-      render: (rowData) => <div style={{ width: "100px", backgroundColor: rowData.statusName === 'Draft' ? '#F5E767' : rowData.statusName === 'Sent' ? '#008000aa' : '#f90000aa', borderRadius: "4px", padding:"1px 0px 3px 0px", textAlign: "center", color: 'white' }}>{rowData.statusName}</div>,
+      render: (rowData) => <div style={{ width: "100px", backgroundColor: rowData.statusName === 'Draft' ? '#F5E767' : rowData.statusName === 'Sent' ? '#008000aa' : '#f90000aa', borderRadius: "4px", padding: "1px 0px 3px 0px", textAlign: "center", color: 'white' }}>{rowData.statusName}</div>,
       searchable: false, export: false, editable: false, lookup: { Sent: "Sent", Failed: "Failed", Draft: "Draft" }, filterPlaceholder: "filter",
     }
   ]
@@ -91,14 +92,14 @@ function AlertTable() {
 
   //Helper Function for CRUD operations in the alert table
   function addRow(data) {
-    axios(axiosConfig.postConfig('http://localhost:4010/admin/alert', data))
+    axios(axiosConfig.postConfig('http://localhost:4000/admin/alert', data))
       .then(response => {
         setreRender('second time')
       })
   }
 
   function deleteRow(id) {
-    axios(axiosConfig.deleteConfig(`http://localhost:4010/admin/alert/${id}`, id))
+    axios(axiosConfig.deleteConfig(`http://localhost:4000/admin/alert/${id}`, id))
       .then(response => {
       })
       .catch(() => {
@@ -106,7 +107,7 @@ function AlertTable() {
   }
 
   function updateRow(id, data) {
-    axios(axiosConfig.editConfig(`http://localhost:4010/admin/alert/${id}`, id, data))
+    axios(axiosConfig.editConfig(`http://localhost:4000/admin/alert/${id}`, id, data))
       .then(response => {
         setreRender('second time')
       })
@@ -186,7 +187,7 @@ function AlertTable() {
           showTextRowsSelected: true,
           grouping: true,
           columnsButton: true,
-          headerStyle: { background: "#FC816D", color: "#fff", fontFamily : "roboto", fontSize : "16px" }
+          headerStyle: { background: "#FC816D", color: "#fff", fontFamily: "roboto", fontSize: "16px" }
         }}
 
         actions={[

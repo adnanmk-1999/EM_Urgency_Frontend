@@ -1,7 +1,7 @@
 function isAdmin() {
     if (localStorage.getItem('accessToken')) {
         var x = localStorage.getItem('roles');
-        if (x === 'Role:ADMIN,Role:USER') {
+        if (x === 'Role:ADMIN,Role:USER' || 'Role:USER,Role:ADMIN') {
             return true;
         }
     }

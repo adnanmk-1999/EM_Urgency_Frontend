@@ -24,7 +24,7 @@ function Login() {
     event.preventDefault();
 
     axios
-      .post(`http://localhost:4010/users/login`, data)
+      .post(`http://localhost:4000/users/login`, data)
       .then((response) => {
         let role = response.data.roles;
         const Role = "Role:ADMIN";
@@ -57,7 +57,7 @@ function Login() {
   const handleLogin = (googleData) => {
     console.log(googleData.tokenId);
     axios
-      .post(`http://localhost:4010/users/glogin`, { token: googleData.tokenId })
+      .post(`http://localhost:4000/users/glogin`, { token: googleData.tokenId })
       .then((data) => {
         userContext.login(
           data.data.accessToken,

@@ -26,7 +26,7 @@ function EmailDropdown() {
     const [tableData, setTableData] = useState([])
 
     useEffect(() => {
-        axios(axiosConfig.getConfig('http://localhost:4010/admin/alert')) //gets data from api
+        axios(axiosConfig.getConfig('http://localhost:4000/admin/alert')) //gets data from api
             .then(response => {
                 setTableData(response.data); //save only 'data' in response to the state
             })
@@ -36,7 +36,7 @@ function EmailDropdown() {
     }, []);
 
     useEffect(() => {
-        axios(axiosConfig.getConfig('http://localhost:4010/users')) //gets data from api
+        axios(axiosConfig.getConfig('http://localhost:4000/users')) //gets data from api
             .then(response => {
 
                 //display output (responce)
@@ -68,7 +68,7 @@ function EmailDropdown() {
 
         else if (option.value === "1") {
 
-            axios(axiosConfig.postConfig(`http://localhost:4010/admin/sentalert/all`, data))
+            axios(axiosConfig.postConfig(`http://localhost:4000/admin/sentalert/all`, data))
                 .then(response => {
                     Toaster.notifyEmailSend()
                     navigate('/admindashboard')
@@ -83,7 +83,7 @@ function EmailDropdown() {
         }
 
         else if (option.value === "2") {
-            axios(axiosConfig.postConfig(`http://localhost:4010/admin/sentalert/departments`, data))
+            axios(axiosConfig.postConfig(`http://localhost:4000/admin/sentalert/departments`, data))
                 .then(response => {
                     Toaster.notifyEmailSend()
                     navigate('/admindashboard')
@@ -96,7 +96,7 @@ function EmailDropdown() {
                 })
         }
         else if (option.value === "3") {
-            axios(axiosConfig.postConfig(`http://localhost:4010/admin/sentalert/locations`, data))
+            axios(axiosConfig.postConfig(`http://localhost:4000/admin/sentalert/locations`, data))
                 .then(response => {
                     Toaster.notifyEmailSend()
                     navigate('/admindashboard')
@@ -113,7 +113,7 @@ function EmailDropdown() {
             var sendIndividual = {
                 ...data, 'individualId': sendList
             }
-            axios(axiosConfig.postConfig(`http://localhost:4010/admin/sentalert/individuals`, sendIndividual))
+            axios(axiosConfig.postConfig(`http://localhost:4000/admin/sentalert/individuals`, sendIndividual))
                 .then(response => {
                     Toaster.notifyEmailSend()
                     navigate('/admindashboard')
@@ -266,7 +266,7 @@ function EmailDropdown() {
                                                                 showTextRowsSelected: true,
                                                                 columnsButton: false,
                                                                 rowStyle: (data, index) => index % 2 === 0 ? { background: "#f5f5f5" } : null,
-                                                                headerStyle: { background: "#FC816D", color: "#fff", fontFamily : "roboto", fontSize : "16px" }
+                                                                headerStyle: { background: "#FC816D", color: "#fff", fontFamily: "roboto", fontSize: "16px" }
                                                             }}
 
                                                             components={{

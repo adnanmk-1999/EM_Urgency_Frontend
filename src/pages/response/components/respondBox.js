@@ -25,7 +25,7 @@ function RespondDialogBox(props) {
   }
 
   function handleSubmit() {
-    axios(axiosConfig.editConfig(`http://localhost:4010/users/response/${responseId}`, responseId, response))
+    axios(axiosConfig.editConfig(`http://localhost:4000/users/response/${responseId}`, responseId, response))
       .then(() => {
         Toaster.notifyResponseSubmit();
         setTimeout(() => {
@@ -67,9 +67,9 @@ function RespondDialogBox(props) {
             </center>
           </DialogContentText>
         </DialogContent>
-          <DialogActions>
+        <DialogActions>
           <Button onClick={() => { props.handleClose(); handleSubmit(); }}>Submit</Button><br />
-          <Button onClick={props.handleClose}>Cancel</Button>  
+          <Button onClick={props.handleClose}>Cancel</Button>
         </DialogActions>
       </Dialog>
     </div>

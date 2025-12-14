@@ -27,7 +27,7 @@ function UserResponse() {
   ]
 
   useEffect(() => {
-    axios(axiosConfig.getConfig('http://localhost:4010/users/alerts')) //gets data from api
+    axios(axiosConfig.getConfig('http://localhost:4000/users/alerts')) //gets data from api
       .then(response => {
         setalertData(response.data.data); //save only 'data' in response to the state
       })
@@ -83,7 +83,7 @@ function UserResponse() {
               showTextRowsSelected: true,
               grouping: true,
               columnsButton: true,
-              headerStyle: { background: "#FC816D", color: "#fff", fontFamily : "roboto", fontSize : "16px" }
+              headerStyle: { background: "#FC816D", color: "#fff", fontFamily: "roboto", fontSize: "16px" }
             }}
 
             actions={[

@@ -27,7 +27,7 @@ function BarGraph() {
   };
 
   useEffect(() => {
-    axios(axiosConfig.postConfig('http://localhost:4010/admin/barchart', date)) //gets data from api
+    axios(axiosConfig.postConfig('http://localhost:4000/admin/barchart', date)) //gets data from api
       .then(response => {
         setData(response.data.data); //save only 'data' in response to the state
       })

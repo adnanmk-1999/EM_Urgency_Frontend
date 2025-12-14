@@ -19,7 +19,7 @@ function PieGraph() {
 
 
   useEffect(() => {
-    axios(axiosConfig.getConfig('http://localhost:4010/admin/piechartsent')) //gets data from api
+    axios(axiosConfig.getConfig('http://localhost:4000/admin/piechartsent')) //gets data from api
       .then(response => {
         setsendCount(response.data.data.Sent); //save only 'data' in response to the state
       })
@@ -27,14 +27,14 @@ function PieGraph() {
 
 
   useEffect(() => {
-    axios(axiosConfig.getConfig('http://localhost:4010/admin/piechartfailed')) //gets data from api
+    axios(axiosConfig.getConfig('http://localhost:4000/admin/piechartfailed')) //gets data from api
       .then(response => {
         setfailedCount(response.data.data.Failed); //save only 'data' in response to the state
       })
   }, [])
 
   useEffect(() => {
-    axios(axiosConfig.getConfig('http://localhost:4010/admin/piechartdraft')) //gets data from api
+    axios(axiosConfig.getConfig('http://localhost:4000/admin/piechartdraft')) //gets data from api
       .then(response => {
         setdraftCount(response.data.data.Draft); //save only 'data' in response to the state
       })

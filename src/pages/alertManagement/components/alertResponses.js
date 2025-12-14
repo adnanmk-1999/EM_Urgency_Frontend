@@ -22,7 +22,7 @@ function AlertResponses() {
         var data = {
             "alertId": location.state.id
         }
-        axios(axiosConfig.postConfig('http://localhost:4010/users/alertresponses', data)) //gets data from api
+        axios(axiosConfig.postConfig('http://localhost:4000/users/alertresponses', data)) //gets data from api
             .then(response => {
                 setTableData(response.data); //save only 'data' in response to the state
                 var total = response.data.length
@@ -113,7 +113,7 @@ function AlertResponses() {
                         showSelectAllCheckbox: true,
                         showTextRowsSelected: true,
                         rowStyle: (data, index) => index % 2 === 0 ? { background: "#f5f5f5" } : null,
-                        headerStyle: { background: "#FC816D", color: "#fff", fontFamily : "roboto", fontSize : "16px" }
+                        headerStyle: { background: "#FC816D", color: "#fff", fontFamily: "roboto", fontSize: "16px" }
                     }}
 
                     components={{
