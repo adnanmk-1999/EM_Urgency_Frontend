@@ -34,10 +34,21 @@ function NavBar() {
           </Nav>
 
           <Nav>
-            {!localStorage.getItem('accessToken') && <NavLink to="/login" className="newLink">Sign In</NavLink>}
-            {userContext.userDetails && <NavLink onClick={() => {
-              userContext.logout(); window.location = "/login"
-            }} to="/login" className="newLink">Sign Out</NavLink>}
+            {!localStorage.getItem('accessToken') &&
+              <NavLink to="/login" className="authBtn">Sign In</NavLink>
+            }
+            {userContext.userDetails &&
+              <NavLink
+                onClick={() => {
+                  userContext.logout();
+                  window.location = "/login";
+                }}
+                to="/login"
+                className="authBtn logoutBtn"
+              >
+                Sign Out
+              </NavLink>
+            }
           </Nav>
 
         </Navbar.Collapse>

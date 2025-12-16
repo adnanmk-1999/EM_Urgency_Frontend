@@ -1,18 +1,18 @@
-.newLink{
+.newLink {
     color: rgb(20, 20, 20);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 16px;
-    margin : 0 2px 0 2px;
+    margin: 0 2px 0 2px;
 }
 
-.active{
+.active {
     color: white;
     background-color: #FFC0B1;
 }
 
-a:hover{
+.newLink:hover {
     background-color: #ffe5df;
     text-decoration: none;
     color: black;
@@ -24,4 +24,50 @@ a:hover{
     padding: 14px 16px;
     text-decoration: none;
     font-size: 16px;
+}
+
+.authBtn {
+    display: inline-block;
+    padding: 8px 18px;
+    margin-left: 10px;
+
+    background-color: #FFC0B1;
+    color: white !important;
+
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 400;
+
+    text-decoration: none;
+    cursor: pointer;
+
+    transition: all 0.2s ease-in-out;
+}
+
+/* Hover effect */
+.authBtn:hover {
+    background-color: #ffab99;
+    color: white;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+/* Active / Click */
+.authBtn:active {
+    transform: translateY(0);
+}
+
+/* Focus (keyboard accessibility) */
+.authBtn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 192, 177, 0.5);
+}
+
+/* Optional: Sign Out variant */
+.logoutBtn {
+    background-color: #FFC0B1;
+}
+
+.logoutBtn:hover {
+    background-color: #ffab99;
 }
