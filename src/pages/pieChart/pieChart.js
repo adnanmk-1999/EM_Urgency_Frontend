@@ -1,50 +1,59 @@
 import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer } from "recharts";
+import { useNavigate } from 'react-router-dom';
 import roleController from '../../helpers/roleLogin';
-import axios from 'axios';
-import axiosConfig from '../../helpers/axiosConfig';
 
-import './pieChart.css'
+import axiosClient from '../../api/axiosClient';
+
+import './pieChart.css';
 
 function PieGraph() {
 
-  if (!roleController.isAdmin()) {
-    window.location = '/login'
-  }
+  const navigate = useNavigate();
 
-  const [sentCount, setsendCount] = useState([])
-  const [failedCount, setfailedCount] = useState([])
-  const [draftCount, setdraftCount] = useState([])
+  const [sentCount, setsendCount] = useState([]);
+  const [failedCount, setfailedCount] = useState([]);
+  const [draftCount, setdraftCount] = useState([]);
 
-
-
+  // ADMIN GUARD (functional fix)
   useEffect(() => {
-    axios(axiosConfig.getConfig('http://localhost:4000/admin/piechartsent')) //gets data from api
-      .then(response => {
-        setsendCount(response.data.data.Sent); //save only 'data' in response to the state
-      })
-  }, [])
+    if (!roleController.isAdmin()) {
+      navigate('/login', { replace: true });
+    }
+  }, [navigate]);
 
-
+  // FETCH SENT COUNT
   useEffect(() => {
-    axios(axiosConfig.getConfig('http://localhost:4000/admin/piechartfailed')) //gets data from api
+    axiosClient
+      .get('/admin/piechartsent')
       .then(response => {
-        setfailedCount(response.data.data.Failed); //save only 'data' in response to the state
-      })
-  }, [])
+        setsendCount(response.data.data.Sent);
+      });
+  }, []);
 
+  // FETCH FAILED COUNT
   useEffect(() => {
-    axios(axiosConfig.getConfig('http://localhost:4000/admin/piechartdraft')) //gets data from api
+    axiosClient
+      .get('/admin/piechartfailed')
       .then(response => {
-        setdraftCount(response.data.data.Draft); //save only 'data' in response to the state
-      })
-  }, [])
+        setfailedCount(response.data.data.Failed);
+      });
+  }, []);
+
+  // FETCH DRAFT COUNT
+  useEffect(() => {
+    axiosClient
+      .get('/admin/piechartdraft')
+      .then(response => {
+        setdraftCount(response.data.data.Draft);
+      });
+  }, []);
 
   const data = [
     { name: "Success", value: sentCount, fill: "#88E16E" },
     { name: "Draft", value: draftCount, fill: "#F5E767" },
     { name: "Failed", value: failedCount, fill: "#F66060" }
-  ]
+  ];
 
   return (
     <>

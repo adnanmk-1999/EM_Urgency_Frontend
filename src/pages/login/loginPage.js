@@ -1,79 +1,102 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import GoogleLogin from "react-google-login";
+
+import { login } from "../../api/auth.api";
+import axiosClient from "../../api/axiosClient";
+
 import GoogleLogo from "../../images/googleLogo.png";
 import UserContext from "../../context/userContext";
-import GoogleLogin from "react-google-login";
 
 import "./login.css";
 
 function Login() {
-
-  const [data, setData] = useState({});
+  const [data, setData] = useState({
+    username: "",
+    password: "",
+  });
 
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
 
+  // FORM HANDLERS
   function handleChange(event) {
-    const name = event.target.name;
-    const value = event.target.value;
-    setData((values) => ({ ...values, [name]: value }));
+    const { name, value } = event.target;
+    setData((prev) => ({ ...prev, [name]: value }));
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
-    axios
-      .post(`http://localhost:4000/users/login`, data)
-      .then((response) => {
-        let role = response.data.roles;
-        const Role = "Role:ADMIN";
-        userContext.login(
-          response.data.accessToken,
-          response.data.roles,
-          response.data.username,
-          response.data.email,
-          response.data.refreshToken
-        );
-        if (role.includes(Role)) {
-          window.location = '/admindashboard';
-        } else {
-          window.location = "/userdashboard";
-        }
-      })
-      .catch((error) => {
-        localStorage.clear();
-        if (error.response) {
-          alert(error.response.data.message); //=> response payload
-        }
-      });
+    try {
+      const response = await login(data);
+
+      const {
+        accessToken,
+        refreshToken,
+        roles,
+        username,
+        email,
+      } = response.data;
+
+      userContext.login(
+        accessToken,
+        roles,
+        username,
+        email,
+        refreshToken
+      );
+
+      if (roles.includes("Role:ADMIN")) {
+        navigate("/admindashboard", { replace: true });
+      } else {
+        navigate("/userdashboard", { replace: true });
+      }
+
+    } catch (error) {
+      localStorage.clear();
+
+      const message =
+        error.response?.data?.message ||
+        "Login failed. Please try again.";
+
+      alert(message);
+    }
   }
 
-  const handleFailure = (result) => {
-    alert(result);
+  // GOOGLE LOGIN
+  const handleLogin = async (googleData) => {
+    try {
+      const response = await axiosClient.post("/users/glogin", {
+        token: googleData.tokenId,
+      });
+
+      const {
+        accessToken,
+        refreshToken,
+        roles,
+        username,
+        email,
+      } = response.data;
+
+      userContext.login(
+        accessToken,
+        roles,
+        username,
+        email,
+        refreshToken
+      );
+
+      navigate("/userdashboard", { replace: true });
+
+    } catch (error) {
+      localStorage.clear();
+      alert("You are not an employee of the company!");
+    }
   };
 
-
-  const handleLogin = (googleData) => {
-    console.log(googleData.tokenId);
-    axios
-      .post(`http://localhost:4000/users/glogin`, { token: googleData.tokenId })
-      .then((data) => {
-        userContext.login(
-          data.data.accessToken,
-          data.data.role,
-          data.data.Username,
-          data.data.email,
-          data.data.refreshToken
-        );
-        navigate("/userdashboard");
-      })
-      .catch((error) => {
-        localStorage.clear();
-        if (error.response) {
-          alert("You are not an employee of the company !"); //=> response payload
-        }
-      });
+  const handleFailure = () => {
+    alert("Google login failed. Please try again.");
   };
 
   return (

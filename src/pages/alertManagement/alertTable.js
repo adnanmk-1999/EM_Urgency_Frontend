@@ -2,44 +2,40 @@ import React, { useEffect, useState } from 'react';
 import MaterialTable from 'material-table'
 import AddIcon from '@material-ui/icons/Add';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import axiosInstance from "../../helpers/httpServer";
 import roleController from '../../helpers/roleLogin';
 import Toaster from '../../components/toaster';
-import axiosConfig from '../../helpers/axiosConfig';
 import { TablePagination, Grid, Typography, Divider } from '@material-ui/core'
+
+import axiosClient from "../../api/axiosClient";
 
 function AlertTable() {
 
-  if (!roleController.isAdmin()) {
-    window.location = '/login'
-  }
-
-  const [tableData, setTableData] = useState([]);
-
-  const [reRender, setreRender] = useState('one time')
-
   const navigate = useNavigate();
 
-  //Get alerts 
+  const [tableData, setTableData] = useState([]);
+  const [reRender, setreRender] = useState('one time');
+
   useEffect(() => {
-    axiosInstance
-      .get("http://localhost:4000/admin/alert")
+    if (!roleController.isAdmin()) {
+      navigate('/login', { replace: true });
+    }
+  }, [navigate]);
+
+  useEffect(() => {
+    axiosClient
+      .get("/admin/alert")
       .then((response) => {
         setTableData(response.data);
       })
       .catch((e) => {
-        console.log(e)
+        console.log(e);
         alert("Session Timed out login again");
         localStorage.clear();
-        window.location = "/login";
+        navigate("/login", { replace: true });
       });
-
-
-  }, [reRender]);
+  }, [reRender, navigate]);
 
   const redirectToReport = (rowData) => {
-
     navigate('/sendemail', {
       state: { id: rowData.id, message: rowData.message, subject: rowData.subject }
     });
@@ -87,30 +83,31 @@ function AlertTable() {
       render: (rowData) => <div style={{ width: "100px", backgroundColor: rowData.statusName === 'Draft' ? '#F5E767' : rowData.statusName === 'Sent' ? '#008000aa' : '#f90000aa', borderRadius: "4px", padding: "1px 0px 3px 0px", textAlign: "center", color: 'white' }}>{rowData.statusName}</div>,
       searchable: false, export: false, editable: false, lookup: { Sent: "Sent", Failed: "Failed", Draft: "Draft" }, filterPlaceholder: "filter",
     }
-  ]
+  ];
 
-
-  //Helper Function for CRUD operations in the alert table
   function addRow(data) {
-    axios(axiosConfig.postConfig('http://localhost:4000/admin/alert', data))
-      .then(response => {
-        setreRender('second time')
-      })
+    return axiosClient
+      .post("/admin/alert", data)
+      .then(() => {
+        setreRender(String(Date.now()));
+      });
   }
 
   function deleteRow(id) {
-    axios(axiosConfig.deleteConfig(`http://localhost:4000/admin/alert/${id}`, id))
-      .then(response => {
-      })
-      .catch(() => {
-      })
+    return axiosClient
+      .delete(`/admin/alert/${id}`)
+      .then(() => {
+        // optional: trigger reload if backend changes status counts etc.
+        setreRender(String(Date.now()));
+      });
   }
 
   function updateRow(id, data) {
-    axios(axiosConfig.editConfig(`http://localhost:4000/admin/alert/${id}`, id, data))
-      .then(response => {
-        setreRender('second time')
-      })
+    return axiosClient
+      .put(`/admin/alert/${id}`, data)
+      .then(() => {
+        setreRender(String(Date.now()));
+      });
   }
 
   return (
@@ -125,9 +122,9 @@ function AlertTable() {
             setTableData([{ ...newRow, statusName: "Draft" }, ...tableData])
             setTimeout(() => {
               Toaster.notifyAdd()
-              addRow(newRow);
-              setreRender('second time')
-              resolve()
+              addRow(newRow)
+                .then(() => resolve())
+                .catch(() => reject());
             }, 500)
           }),
           onRowUpdate: (newRow, oldRow) => new Promise((resolve, reject) => {
@@ -135,9 +132,12 @@ function AlertTable() {
             updatedData[oldRow.tableData.id] = newRow
             setTableData(updatedData)
             setTimeout(() => {
-              resolve();
-              updateRow(newRow.id, newRow);
-              Toaster.notifyEdit();
+              updateRow(newRow.id, newRow)
+                .then(() => {
+                  Toaster.notifyEdit();
+                  resolve();
+                })
+                .catch(() => reject());
             }, 500)
           }),
           onRowDelete: (selectedRow) => new Promise((resolve, reject) => {
@@ -145,11 +145,13 @@ function AlertTable() {
             updatedData.splice(selectedRow.tableData.id, 1)
             setTableData(updatedData)
             setTimeout(() => {
-              resolve();
-              deleteRow(selectedRow.id);
-              Toaster.notifyDelete();
-            }
-              , 1000)
+              deleteRow(selectedRow.id)
+                .then(() => {
+                  Toaster.notifyDelete();
+                  resolve();
+                })
+                .catch(() => reject());
+            }, 1000)
           }),
           onRowAddCancelled: () => { Toaster.notifyCancel() },
           onRowUpdateCancelled: () => { Toaster.notifyCancel() },

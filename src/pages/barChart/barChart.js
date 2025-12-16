@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import axiosConfig from '../../helpers/axiosConfig';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import { useNavigate } from 'react-router-dom';
 import roleController from '../../helpers/roleLogin';
 import Dates from '../../helpers/getDate';
 import CustomTooltip from '../../helpers/toolTip';
 
-import './barChart.css'
+import axiosClient from '../../api/axiosClient';
+
+import './barChart.css';
 
 function BarGraph() {
 
-  if (!roleController.isAdmin()) {
-    window.location = '/login'
-  }
+  const navigate = useNavigate();
 
   const [data, setData] = useState([]);
 
@@ -20,28 +19,50 @@ function BarGraph() {
     currentDate: Dates.getDate()
   });
 
+  // ===============================
+  // ADMIN GUARD (functional fix)
+  // ===============================
+  useEffect(() => {
+    if (!roleController.isAdmin()) {
+      navigate('/login', { replace: true });
+    }
+  }, [navigate]);
+
   function handleChange(event) {
     const name = event.target.name;
     const value = event.target.value;
-    setDate(values => ({ ...values, [name]: value }))
-  };
+    setDate(values => ({ ...values, [name]: value }));
+  }
 
+  // ===============================
+  // FETCH BAR CHART DATA
+  // ===============================
   useEffect(() => {
-    axios(axiosConfig.postConfig('http://localhost:4000/admin/barchart', date)) //gets data from api
+    axiosClient
+      .post('/admin/barchart', date)
       .then(response => {
-        setData(response.data.data); //save only 'data' in response to the state
+        setData(response.data.data);
       })
-      .catch((error) => {
-        alert('Session Timed out login again')
-        window.location = '/login'
+      .catch(() => {
+        alert('Session Timed out login again');
+        localStorage.clear();
+        navigate('/login', { replace: true });
       });
-  }, [date]);
+  }, [date, navigate]);
 
   return (
     <>
       <div className='resHeading'>Response Status</div>
 
-      <label className='dataInput'>Select date :</label><input type='date' className='dateInput' name='currentDate' value={date.currentDate || ''} onChange={handleChange} max={Dates.getDate()}></input>
+      <label className='dataInput'>Select date :</label>
+      <input
+        type='date'
+        className='dateInput'
+        name='currentDate'
+        value={date.currentDate || ''}
+        onChange={handleChange}
+        max={Dates.getDate()}
+      />
 
       {data.length === 0 ?
         <>
@@ -90,7 +111,8 @@ function BarGraph() {
               <Bar dataKey="Unresponded" barSize={50} fill="#CA6767" />
             </BarChart>
           </ResponsiveContainer>
-        </>}
+        </>
+      }
     </>
   );
 }

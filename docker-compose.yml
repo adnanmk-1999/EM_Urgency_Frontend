@@ -3,9 +3,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
+    env_file:
+      - .env
     volumes:
       - .:/app
       - /app/node_modules
     ports:
-      - "${PORT}:${PORT}"
+      - "${REACT_APP_PORT}:${REACT_APP_PORT}"
     stdin_open: true
