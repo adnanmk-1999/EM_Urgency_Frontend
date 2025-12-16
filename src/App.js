@@ -7,12 +7,16 @@ import RouterIndex from './routers';
 
 function App() {
   return (
-    <UserContextProvider>
-      <>
-        <RouterIndex />
-        <FooterPage />
-      </>
-    </UserContextProvider>
+    <div className="appLayout">
+      <UserContextProvider>
+        <>
+          <main className="mainContent">
+            <RouterIndex />
+          </main>
+          <FooterPage />
+        </>
+      </UserContextProvider>
+    </div>
   );
 };
 
