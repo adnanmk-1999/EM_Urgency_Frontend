@@ -56,7 +56,6 @@ function EmailDropdown() {
     }, [option, navigate]);
 
     const columns = [
-        { title: 'Avatar', field: 'Image', filtering: false, render: rowData => <img src={rowData.Image} alt="profile" style={{ width: 50, borderRadius: '50%' }} /> },
         { title: "Employee Id", field: "Id", sorting: true, filterPlaceholder: "filter", headerStyle: { color: "#fff" } },
         { title: "Name", field: "Name", sorting: true, filterPlaceholder: "filter", headerStyle: { color: "#fff" } },
         { title: "Email", field: "Email", sorting: true, filterPlaceholder: "filter", headerStyle: { color: "#fff" } },
@@ -178,96 +177,118 @@ function EmailDropdown() {
                         <Row>
                             <Col className='columnDropdown'>
                                 <Card style={{ width: '100%', background: 'none', border: 'none', padding: '0 0 0 0' }}>
-                                    <Card.Body className="email">
-                                        <Card.Title className='sendHeader'>Select Users To Send Email</Card.Title><br />
-                                        <Card.Text>
-
-                                            <label className='selectBy'>Select by:</label> &nbsp;
-                                            <select onChange={handleChange} className="dropDown">
-                                                <option value="0" className='optionName'>Select an option</option>
-                                                <option value="1" className='optionName'>Select All</option>
-                                                <option value="2" className='optionName'>Department</option>
-                                                <option value="3" className='optionName'>Location</option>
-                                                <option value="4" className='optionName'>Individual</option>
-                                            </select>
-
-                                            <br /><br />
-
-                                            {option.value === "2" && (
-                                                <div className='dept'>
-                                                    <label className='department'>Departments: </label><br />
-                                                    <input type="checkbox" value="1" className='checkbox' onChange={handleChangeCheckDepartment} /> &nbsp;
-                                                    <label className='departments'>Digital Tranformation Services</label><br />
-                                                    <input type="checkbox" value="2" className='checkbox' onChange={handleChangeCheckDepartment} /> &nbsp;
-                                                    <label className='departments'>Product Engineering Services</label><br />
-                                                    <input type="checkbox" value="3" className='checkbox' onChange={handleChangeCheckDepartment} /> &nbsp;
-                                                    <label className='departments'>Enterprice Software Services</label><br />
+                                    <Card.Body >
+                                        <div className="emailHeader">
+                                            <h1>Select Recipients</h1>
+                                            <div className="emailUnderline"></div>
+                                            <p className="emailSubtext">
+                                                Choose how you want to target recipients for this alert
+                                            </p>
+                                        </div>
+                                        <div className="emailCard">
+                                            <Card.Text>
+                                                <div className="selectRow">
+                                                    <label className='selectBy'>Select by:</label>
+                                                    <select onChange={handleChange} className="dropDown">
+                                                        <option value="0" className='optionName'>Select an option</option>
+                                                        <option value="1" className='optionName'>Select All</option>
+                                                        <option value="2" className='optionName'>Department</option>
+                                                        <option value="3" className='optionName'>Location</option>
+                                                        <option value="4" className='optionName'>Individual</option>
+                                                    </select>
                                                 </div>
-                                            )}
 
-                                            {option.value === "3" && (
-                                                <div className='dept'>
-                                                    <label className='location'>Locations: </label><br />
-                                                    <input type="checkbox" value="1" onChange={handleChangeCheckLocation} /> &nbsp;
-                                                    <label className='locations'>Thiruvananthapuram</label><br />
-                                                    <input type="checkbox" value="2" onChange={handleChangeCheckLocation} /> &nbsp;
-                                                    <label className='locations'>Bengaluru</label><br />
-                                                    <input type="checkbox" value="3" onChange={handleChangeCheckLocation} /> &nbsp;
-                                                    <label className='locations'>Kochi</label><br />
-                                                </div>
-                                            )}
 
-                                            {option.value === "4" && (
-                                                <div className='individual'>
-                                                    <MaterialTable
-                                                        title="Select employees"
-                                                        columns={columns}
-                                                        data={tableData}
-                                                        options={{
-                                                            sorting: true,
-                                                            search: true,
-                                                            searchFieldAlignment: "right",
-                                                            searchAutoFocus: true,
-                                                            searchFieldVariant: "standard",
-                                                            filtering: true,
-                                                            paging: true,
-                                                            pageSizeOptions: [2, 5, 10, 20, 50, 100],
-                                                            pageSize: 5,
-                                                            paginationType: "stepped",
-                                                            showFirstLastPageButtons: false,
-                                                            paginationPosition: "bottom",
-                                                            addRowPosition: "first",
-                                                            actionsColumnIndex: -1,
-                                                            selection: true,
-                                                            showSelectAllCheckbox: true,
-                                                            showTextRowsSelected: true,
-                                                            columnsButton: false,
-                                                            rowStyle: (data, index) => index % 2 === 0 ? { background: "#f5f5f5" } : null,
-                                                            headerStyle: { background: "#FC816D", color: "#fff", fontFamily: "roboto", fontSize: "16px" }
-                                                        }}
-                                                        components={{
-                                                            Pagination: (props) => <>
-                                                                <Grid container style={{ padding: 15 }}>
-                                                                    <Grid sm={12} item align="right">
-                                                                        <Typography variant="subtitle2" className='paginationTotal'>
-                                                                            Total Employees : {props.count}
-                                                                        </Typography>
+                                                {option.value === "2" && (
+                                                    <div className='dept'>
+                                                        <label className='department'>Departments: </label><br />
+                                                        <input type="checkbox" value="1" className='checkbox' onChange={handleChangeCheckDepartment} /> &nbsp;
+                                                        <label className='departments'>Digital Tranformation Services</label><br />
+                                                        <input type="checkbox" value="2" className='checkbox' onChange={handleChangeCheckDepartment} /> &nbsp;
+                                                        <label className='departments'>Product Engineering Services</label><br />
+                                                        <input type="checkbox" value="3" className='checkbox' onChange={handleChangeCheckDepartment} /> &nbsp;
+                                                        <label className='departments'>Enterprice Software Services</label><br />
+                                                    </div>
+                                                )}
+
+                                                {option.value === "3" && (
+                                                    <div className='dept'>
+                                                        <label className='location'>Locations: </label><br />
+                                                        <input type="checkbox" value="1" onChange={handleChangeCheckLocation} /> &nbsp;
+                                                        <label className='locations'>Thiruvananthapuram</label><br />
+                                                        <input type="checkbox" value="2" onChange={handleChangeCheckLocation} /> &nbsp;
+                                                        <label className='locations'>Bengaluru</label><br />
+                                                        <input type="checkbox" value="3" onChange={handleChangeCheckLocation} /> &nbsp;
+                                                        <label className='locations'>Kochi</label><br />
+                                                    </div>
+                                                )}
+
+                                                {option.value === "4" && (
+                                                    <div className='individual'>
+                                                        <MaterialTable
+                                                            title="Select employees"
+                                                            columns={columns}
+                                                            data={tableData}
+                                                            localization={{
+                                                                toolbar: {
+                                                                    searchPlaceholder: "Search",
+                                                                },
+                                                            }}
+                                                            options={{
+                                                                sorting: true,
+                                                                search: true,
+                                                                searchFieldAlignment: "right",
+                                                                searchAutoFocus: true,
+                                                                searchFieldVariant: "standard",
+                                                                filtering: true,
+                                                                paging: true,
+                                                                pageSizeOptions: [2, 5, 10, 20, 50, 100],
+                                                                pageSize: 5,
+                                                                paginationType: "stepped",
+                                                                showFirstLastPageButtons: false,
+                                                                paginationPosition: "bottom",
+                                                                addRowPosition: "first",
+                                                                actionsColumnIndex: -1,
+                                                                selection: true,
+                                                                showSelectAllCheckbox: true,
+                                                                showTextRowsSelected: true,
+                                                                columnsButton: false,
+                                                                rowStyle: (data, index) => index % 2 === 0 ? { background: "#f5f5f5" } : null,
+                                                                headerStyle: { background: "#FC816D", color: "#fff", fontFamily: "roboto", fontSize: "16px" }
+                                                            }}
+                                                            components={{
+                                                                Pagination: (props) => <>
+                                                                    <Grid container style={{ padding: 15 }}>
+                                                                        <Grid sm={12} item align="right">
+                                                                            <Typography variant="subtitle2" className='paginationTotal'>
+                                                                                Total Employees : {props.count}
+                                                                            </Typography>
+                                                                        </Grid>
                                                                     </Grid>
-                                                                </Grid>
-                                                                <Divider />
-                                                                <TablePagination {...props} />
-                                                            </>
-                                                        }}
-                                                        onSelectionChange={(selectedRows) => individualSendList(selectedRows)}
-                                                    />
+                                                                    <Divider />
+                                                                    <TablePagination {...props} />
+                                                                </>
+                                                            }}
+                                                            onSelectionChange={(selectedRows) => individualSendList(selectedRows)}
+                                                        />
+                                                    </div>
+                                                )}
+
+                                                <div className="emailActions">
+                                                    <button className="primaryBtn" type="button" onClick={handleSubmit}>
+                                                        Send Alert
+                                                    </button>
+
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => navigate('/admindashboard')}
+                                                        className="secondaryBtn"
+                                                    >
+                                                        Go Back
+                                                    </button>
                                                 </div>
-                                            )}
-
-                                            <br />
-                                            <button className="goBack" type="button" onClick={handleSubmit}>Send</button> &nbsp;&nbsp;
-                                            <button type="button" onClick={() => navigate('/admindashboard')} className='goBack'>Go Back</button>
-
-                                        </Card.Text>
+                                            </Card.Text>
+                                        </div>
                                     </Card.Body>
                                 </Card>
                             </Col>
