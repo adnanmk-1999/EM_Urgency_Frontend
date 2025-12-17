@@ -44,56 +44,112 @@ function RespondDialogBox(props) {
   }
 
   return (
-    <div>
-      <Dialog
-        open={true}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={props.handleClose}
-        aria-describedby="alert-dialog-slide-description"
-      >
-        <DialogTitle>{"Message"}</DialogTitle>
+    <Dialog
+      open
+      TransitionComponent={Transition}
+      keepMounted
+      onClose={props.handleClose}
+      PaperProps={{ style: styles.dialogPaper }}
+    >
+      <DialogTitle style={styles.title}>
+        Message
+      </DialogTitle>
 
-        <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            {props.content}
-          </DialogContentText>
+      <DialogContent>
+        <DialogContentText style={styles.messageText}>
+          {props.content}
+        </DialogContentText>
 
-          <br />
+        <div style={styles.radioGroup}>
+          <label style={styles.radioLabel}>
+            <input
+              type="radio"
+              name="response"
+              value="Accepted"
+              onChange={handleChange}
+            />{' '}
+            Accept
+          </label>
 
-          <DialogContentText id="alert-dialog-slide-description">
-            <center>
-              <div>
-                <input
-                  type="radio"
-                  name="response"
-                  value="Accepted"
-                  onChange={handleChange}
-                />&nbsp;
-                <label>Accept</label> &nbsp;
+          <label style={styles.radioLabel}>
+            <input
+              type="radio"
+              name="response"
+              value="Rejected"
+              onChange={handleChange}
+            />{' '}
+            Reject
+          </label>
+        </div>
+      </DialogContent>
 
-                <input
-                  type="radio"
-                  name="response"
-                  value="Rejected"
-                  onChange={handleChange}
-                />&nbsp;
-                <label>Reject</label>
-              </div>
-            </center>
-          </DialogContentText>
-        </DialogContent>
+      <DialogActions style={styles.actions}>
+        <Button
+          style={styles.submitBtn}
+          onClick={() => {
+            props.handleClose();
+            handleSubmit();
+          }}
+        >
+          Submit
+        </Button>
 
-        <DialogActions>
-          <Button onClick={() => { props.handleClose(); handleSubmit(); }}>
-            Submit
-          </Button>
-          <br />
-          <Button onClick={props.handleClose}>Cancel</Button>
-        </DialogActions>
-      </Dialog>
-    </div>
+        <Button
+          style={styles.cancelBtn}
+          onClick={props.handleClose}
+        >
+          Cancel
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 }
 
 export default RespondDialogBox;
+
+const styles = {
+  dialogPaper: {
+    borderRadius: 12,
+    padding: '10px 4px',
+    minWidth: 420
+  },
+  title: {
+    fontFamily: 'Roboto',
+    fontWeight: 500,
+    fontSize: '20px',
+    color: '#2C2424'
+  },
+  messageText: {
+    fontFamily: 'Roboto',
+    fontSize: '14.5px',
+    color: '#555',
+    marginBottom: 20
+  },
+  radioGroup: {
+    display: 'flex',
+    justifyContent: 'center',
+    gap: 30,
+    marginTop: 10
+  },
+  radioLabel: {
+    fontFamily: 'Roboto',
+    fontSize: '14px',
+    cursor: 'pointer'
+  },
+  actions: {
+    padding: '10px 24px 20px'
+  },
+  submitBtn: {
+    backgroundColor: '#FC816D',
+    color: '#fff',
+    textTransform: 'none',
+    fontWeight: 500,
+    borderRadius: 6,
+    padding: '6px 18px'
+  },
+  cancelBtn: {
+    color: '#666',
+    textTransform: 'none',
+    fontWeight: 500
+  }
+};

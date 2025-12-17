@@ -57,22 +57,31 @@ function PieGraph() {
 
   return (
     <>
-      <div className='statusHeading'>Alert Status</div>
-      <ResponsiveContainer width='100%' height={450}>
-        <PieChart>
-          <Pie
-            dataKey="value"
-            isAnimationActive={true}
-            data={data}
-            cx='50%'
-            cy={200}
-            outerRadius={200}
-            label
-          />
-          <Tooltip />
-          <Legend />
-        </PieChart>
-      </ResponsiveContainer>
+      <div className="chartSection">
+        <div className="chartHeader">
+          <h1>Alert Status</h1>
+          <div className="chartUnderline"></div>
+        </div>
+
+        <div className="chartContainer">
+          <ResponsiveContainer width="100%" height={500}>
+            <PieChart>
+              <Pie
+                data={data}
+                dataKey="value"
+                cx="50%"
+                cy="49%"
+                outerRadius={160}
+                labelLine={false}
+                label={({ name, value }) => `${name}: ${value}`}
+                isAnimationActive
+              />
+              <Tooltip />
+              <Legend verticalAlign="bottom" height={36} />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
     </>
   );
 }

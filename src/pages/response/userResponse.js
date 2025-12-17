@@ -84,10 +84,18 @@ function UserResponse() {
             title="My Alerts"
             columns={columns}
             data={alertData}
+            localization={{
+              toolbar: {
+                searchPlaceholder: "Search by subject, category, or message",
+              },
+            }}
             options={{
               sorting: true,
               search: true,
               searchFieldAlignment: "right",
+              searchFieldStyle: {
+                width: "500px",
+              },
               searchAutoFocus: true,
               searchFieldVariant: "standard",
               filtering: true,

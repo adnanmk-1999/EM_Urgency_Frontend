@@ -23,7 +23,7 @@ function NavBar() {
 
           <Nav className="me-auto">
             <NavLink to="/" className="newLink">Home</NavLink>
-            {roleController.isAdmin() && <NavLink to="/admindashboard" className="newLink">Alert</NavLink>}
+            {roleController.isAdmin() && <NavLink to="/admindashboard" className="newLink">Alerts</NavLink>}
             {roleController.isUser() && <NavLink to="/userdashboard" className="newLink">Inbox</NavLink>}
             {roleController.isAdmin() && <>
               <NavLink className="newLink" to="/piechart"> Alert Chart</NavLink>

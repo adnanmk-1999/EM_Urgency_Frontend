@@ -14,7 +14,7 @@ function ContactUs() {
             <div className='textImage'>
                 <div className='titleContact'>
                     <h1 >Contact Us</h1>
-                    <center><div style={{ height: 6, width: '12%', backgroundColor: "#FC816D" }}></div></center>
+                    <center><div style={{ height: 6, width: '12%', background: "linear-gradient(to right, #FFC0B1 , #ffab99)" }}></div></center>
                     <h2 style={{ paddingTop: '3%', fontWeight: 'lighter' }}>We’re here to help and listen</h2>
                 </div>
                 <img src={ContactImage} className='img-fluid shadow-4 contactImage' alt='contact'></img>

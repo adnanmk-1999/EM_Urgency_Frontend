@@ -117,6 +117,12 @@ function AlertTable() {
         title="Alert Information"
         columns={columns}
         data={tableData}
+        localization={{
+          toolbar: {
+            searchPlaceholder: "Search by subject, category, or message",
+          },
+        }}
+
         editable={{
           onRowAdd: (newRow) => new Promise((resolve, reject) => {
             setTableData([{ ...newRow, statusName: "Draft" }, ...tableData])
@@ -170,6 +176,9 @@ function AlertTable() {
           sorting: true,
           search: true,
           searchFieldAlignment: "right",
+          searchFieldStyle: {
+            width: "500px",
+          },
           searchAutoFocus: true,
           searchFieldVariant: "standard",
           filtering: true,

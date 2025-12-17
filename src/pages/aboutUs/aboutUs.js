@@ -10,7 +10,7 @@ function AboutUs() {
             <div className='textImage'>
                 <div className='titleAbout'>
                     <h1>About Us</h1>
-                    <div style={{ height: 6, width: '12%', background: "linear-gradient(to right, #E31836 , #E42F24)" }}></div>
+                    <div style={{ height: 6, width: '12%', background: "linear-gradient(to right, #FFC0B1 , #ffab99)" }}></div>
                     <h2>
                         Empowering communities with timely emergency information
                     </h2>
