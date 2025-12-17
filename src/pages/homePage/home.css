@@ -1,16 +1,33 @@
 .homeImage {
-width: stretch;
-height: 369px;
-margin-left: 15%;
-margin-right: 15%;
-margin-top: 3%;
-} 
+    width: 100%;
+    height: 100%;
+}
+
+/* Carousel container */
+.carousel {
+    max-width: 70%;
+    margin: 3% auto;
+}
+
+/* Fix the height of each slide */
+.carousel-item {
+    height: 550px;
+    /* constant height */
+}
+
+/* Center content inside */
+.carousel-item>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* or contain */
+}
 
 .welcomeText {
     margin-top: 3%;
     text-align: center;
-    color:#2C2424;
-    font-family: Roboto;  
+    color: #2C2424;
+    font-family: Roboto;
 }
 
 .welcomeContent {
@@ -24,9 +41,22 @@ margin-top: 3%;
 }
 
 .welcomeButton {
-    background: linear-gradient(180deg, #E41D33 0%, #E42C27 100%);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.authLikeBtn {
+    background-color: #FFC0B1;
+    color: white;
+    border: none;
+    font-weight: 600;
+    padding: 10px 24px;
     border-radius: 40px;
+    transition: all 0.2s ease-in-out;
+}
+
+.authLikeBtn:hover {
+    background-color: #ffab99;
+    color: white;
 }
 
 .welcomeCard {
@@ -35,13 +65,13 @@ margin-top: 3%;
 }
 
 .tileCard {
- border: none;
- margin-top: 5%;
+    border: none;
+    margin-top: 5%;
 }
 
 .tileImage {
     margin-top: 50%;
-    width:100%;
+    width: 100%;
     border-radius: 50%;
 }
 
@@ -58,12 +88,12 @@ margin-top: 3%;
 
 .anchor {
     text-decoration: none;
-    color:#6A6A6A;
+    color: #6A6A6A;
     font-family: Roboto;
 }
 
 .tileHeading {
     text-decoration: none;
-    color:#2C2424;
+    color: #2C2424;
     font-family: Roboto;
 }
