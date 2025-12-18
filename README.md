@@ -14,7 +14,6 @@
   <img src="docs/ui-demo.gif" alt="EM-Urgency UI Demo" width="800"/>
 </p>
 
-<br/>
 
 # 📚 Table of Contents
 
@@ -29,7 +28,6 @@ Jump to a section:
 7. [🔗 Related Repository (Backend)](#-related-repository-backend)
 8. [📄 Author](#-author)
 
-<br/>
 
 # 🚨 About the Application
 
@@ -53,7 +51,6 @@ By combining a user-friendly frontend with a robust backend and integrated email
   <img src="docs/em-urgency-demo.gif" alt="EM-Urgency Demo" width="850"/>
 </p>
 
-<br/>
 
 # 📐 Architecture & Backend Overview
 
@@ -99,7 +96,6 @@ The backend is organized into a modular structure consisting of:
 
 Overall, the backend architecture of EM-Urgency emphasizes **modularity, clarity, and reliability**, making it suitable for both academic use and real-world deployment scenarios.
 
-<br/>
 
 # ✨ Features
 
@@ -184,7 +180,6 @@ Users interact with alerts sent by administrators and provide responses.
 
 Overall, EM-Urgency provides a balanced feature set that supports **rapid emergency communication**, **accountability through response tracking**, and **administrative insight through analytics**, making it suitable for organizational and institutional use.
 
-<br/>
 
 # 🚀 Getting Started with the App
 
@@ -287,8 +282,6 @@ The app will be available at:
 http://localhost:3000
 ```
 
-<br/>
-
 # 🧭 How to Use the App
 
 Once the frontend is running and connected to the backend, you can log in using the **pre-seeded user accounts** provided by the backend database.  
@@ -312,7 +305,6 @@ After logging in:
 - **Admins** can create and send alerts, choose recipients, and view analytics.
 - **Users** can receive alerts via email and respond through the application interface.
 
-<br/>
 
 # 🔮 Future Enhancements
 
@@ -341,7 +333,6 @@ The EM-Urgency platform is designed to be extensible and can be enhanced further
 
 These enhancements aim to make EM-Urgency more scalable, responsive, and suitable for real-world enterprise deployment.
 
-<br/>
 
 # 🔗 Related Repository (Backend)
 
@@ -357,11 +348,10 @@ The EM-Urgency application is supported by a dedicated backend service that hand
 You can find the backend repository here:
 
 👉 **EM-Urgency Backend Repository:**  
-https://github.com/YOUR_USERNAME/EM_Urgency_Backend
+https://github.com/adnanmk-1999/EM_Urgency_Backend
 
 > Please refer to the backend repository for detailed setup instructions, API documentation, database schema, and environment configuration.
 
-<br/>
 
 # 👤 Author  
 Developed by **Adnan**  
