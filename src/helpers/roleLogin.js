@@ -1,30 +1,17 @@
-function isAdmin() {
-    if (localStorage.getItem('accessToken')) {
-        var x = localStorage.getItem('roles');
-        if (x === 'Role:ADMIN,Role:USER' || 'Role:USER,Role:ADMIN') {
-            return true;
-        }
-    }
-    else {
-        return false;
-    }
-}
+const getRoles = () =>
+    (localStorage.getItem("roles") || "")
+        .split(",")
+        .map(r => r.trim())
+        .filter(Boolean);
 
-function isUser() {
-    if (localStorage.getItem('accessToken')) {
-        var x = localStorage.getItem('roles');
-        if (x === 'Role:ADMIN,Role:USER' || 'Role:USER') {
-            return true;
-        }
-    }
-    else {
-        return false;
-    }
-}
+const hasRole = (role) => {
+    if (!localStorage.getItem("accessToken")) return false;
+    return getRoles().includes(role);
+};
 
-var roleController = {
-    isAdmin: isAdmin,
-    isUser: isUser,
-}
+const roleController = {
+    isAdmin: () => hasRole("Role:ADMIN"),
+    isUser: () => hasRole("Role:USER") || hasRole("Role:ADMIN"),
+};
 
-module.exports = roleController;
+export default roleController;

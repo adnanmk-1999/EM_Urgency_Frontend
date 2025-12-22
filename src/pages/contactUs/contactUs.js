@@ -14,53 +14,73 @@ function ContactUs() {
             <div className='textImage'>
                 <div className='titleContact'>
                     <h1 >Contact Us</h1>
-                    <center><div style={{ height: 6, width: '12%', backgroundColor: "#FC816D" }}></div></center>
-                    <h2 style={{ paddingTop: '3%', fontWeight: 'lighter' }}>Get in touch  </h2>
+                    <center><div style={{ height: 6, width: '12%', background: "linear-gradient(to right, #FFC0B1 , #ffab99)" }}></div></center>
+                    <h2 style={{ paddingTop: '3%', fontWeight: 'lighter' }}>We’re here to help and listen</h2>
                 </div>
                 <img src={ContactImage} className='img-fluid shadow-4 contactImage' alt='contact'></img>
             </div>
+            <Container className="contactIntro">
+                <p>
+                    If you have questions, feedback, or need assistance related to emergency
+                    alerts, preparedness resources, or platform usage, feel free to reach out.
+                    We welcome inquiries and aim to respond as promptly as possible.
+                </p>
+            </Container>
 
-            <Container style={{ marginTop: 25 }}>
+            <Container className="contactMethods">
                 <Row>
-                    <Col md={4} >
-                        <Card style={{ marginTop: 15, border: "none" }}>
-                            <center><Card.Img className='imageCardMS' variant="top" src={gmail} /></center>
-                            <Card.Body >
-                                <Card.Text className='cardText'>
-                                    We would love to solve your queries <br />
-                                    <a href="mailto: emurgency.experion@gmail.com" target="_blank" rel="noopener noreferrer" className='anchor'>emurgency.experion@gmail.com</a>
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
+                    <Col md={4}>
+                        <div className="contactBox">
+                            <img src={gmail} alt="Email" />
+                            <h4>Email</h4>
+                            <p>
+                                For questions, feedback, or support related to EM-Urgency.
+                            </p>
+                            <a
+                                href="mailto:emurgency.experion@gmail.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                emurgency.experion@gmail.com
+                            </a>
+                        </div>
                     </Col>
 
-
-                    <Col md={4} >
-                        <Card style={{ marginTop: 15, border: "none" }}>
-                            <center><Card.Img className='imageCard' variant="top" src={twitter} /></center>
-                            <Card.Body>
-                                <Card.Text className='cardText'>
-                                    We would love to keep you updated <br />
-                                    <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="anchor">em_urgency</a>
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
+                    <Col md={4}>
+                        <div className="contactBox">
+                            <img src={twitter} alt="Twitter" />
+                            <h4>Twitter</h4>
+                            <p>
+                                Follow us for updates, announcements, and public safety information.
+                            </p>
+                            <a
+                                href="https://twitter.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                @em_urgency
+                            </a>
+                        </div>
                     </Col>
 
-                    <Col md={4} >
-                        <Card style={{ marginTop: 15, border: "none" }}>
-                            <center><Card.Img className='imageCard' variant="top" src={facebook} /></center>
-                            <Card.Body >
-                                <Card.Text className='cardText'>
-                                    We would love to be in touch with you <br />
-                                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="anchor">em_urgency</a>
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
+                    <Col md={4}>
+                        <div className="contactBox">
+                            <img src={facebook} alt="Facebook" />
+                            <h4>Facebook</h4>
+                            <p>
+                                Stay connected and engage with community-related updates.
+                            </p>
+                            <a
+                                href="https://www.facebook.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                em_urgency
+                            </a>
+                        </div>
                     </Col>
                 </Row>
             </Container>
-            <br></br>
         </>
     );
 }

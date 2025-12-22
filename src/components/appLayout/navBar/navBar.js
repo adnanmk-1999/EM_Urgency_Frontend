@@ -23,7 +23,7 @@ function NavBar() {
 
           <Nav className="me-auto">
             <NavLink to="/" className="newLink">Home</NavLink>
-            {roleController.isAdmin() && <NavLink to="/admindashboard" className="newLink">Alert</NavLink>}
+            {roleController.isAdmin() && <NavLink to="/admindashboard" className="newLink">Alerts</NavLink>}
             {roleController.isUser() && <NavLink to="/userdashboard" className="newLink">Inbox</NavLink>}
             {roleController.isAdmin() && <>
               <NavLink className="newLink" to="/piechart"> Alert Chart</NavLink>
@@ -34,10 +34,21 @@ function NavBar() {
           </Nav>
 
           <Nav>
-            {!localStorage.getItem('accessToken') && <NavLink to="/login" className="newLink">Sign In</NavLink>}
-            {userContext.userDetails && <NavLink onClick={() => {
-              userContext.logout(); window.location = "/login"
-            }} to="/login" className="newLink">Sign Out</NavLink>}
+            {!localStorage.getItem('accessToken') &&
+              <NavLink to="/login" className="authBtn">Sign In</NavLink>
+            }
+            {userContext.userDetails &&
+              <NavLink
+                onClick={() => {
+                  userContext.logout();
+                  window.location = "/login";
+                }}
+                to="/login"
+                className="authBtn logoutBtn"
+              >
+                Sign Out
+              </NavLink>
+            }
           </Nav>
 
         </Navbar.Collapse>

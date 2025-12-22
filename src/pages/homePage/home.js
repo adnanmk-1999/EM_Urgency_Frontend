@@ -19,14 +19,26 @@ function homePage() {
             <Container>
                 <Row>
                     <Col md={12}>
-                        <h1 className='welcomeText'>Welcome</h1>
+                        <h1 className="welcomeText">Welcome to EM-Urgency</h1>
 
-                        <Card className='welcomeCard'>
+                        <Card className="welcomeCard">
                             <Card.Body>
-                                <Card.Text className='welcomeContent'>
-                                    Software systems enable enterprises to operate businesses efficiently while managing growth effectively. With changing organizational practices and rapidly improving technology, modern enterprises have started to rely more on such software systems. They are now investing in futuristic technologies that transform businesses.
+                                <Card.Text className="welcomeContent">
+                                    EM-Urgency is a public safety platform built to support communities during emergencies.
+                                    It provides timely alerts, preparedness guidance, and reliable information to help people
+                                    respond effectively to critical situations such as natural disasters, health emergencies,
+                                    and public safety threats. By bringing alerts and resources together in one place,
+                                    EM-Urgency helps ensure that no vital information is missed when it matters most.
                                 </Card.Text>
-                                <center><Button variant="danger" className="welcomeButton" href="http://www.experionglobal.com/service/digital-transformation/" target='_blank' rel="noopener noreferrer">Learn More</Button></center>
+
+                                <div style={{ textAlign: "center" }}>
+                                    <Button
+                                        className="welcomeButton authLikeBtn"
+                                        href="/aboutus"
+                                    >
+                                        Learn More
+                                    </Button>
+                                </div>
                             </Card.Body>
                         </Card>
                     </Col>
@@ -45,7 +57,9 @@ function homePage() {
                                     <Col xs={8} sm={9} md={9}>
                                         <a href="https://youtu.be/iQuwhR99YdA" target="_blank" rel="noopener noreferrer"><Card.Body className='tileBody'>
                                             <Card.Title className='tileHeading'>Flooding</Card.Title>
-                                            <Card.Text className="anchor">If you approach a flooded road or walkway, follow this rule: turn around, don't drown!
+                                            <Card.Text className="anchor">
+                                                Flooded roads and walkways can be extremely dangerous. If you encounter flooding,
+                                                turn around and choose a safer route — your safety comes first.
                                             </Card.Text>
                                         </Card.Body></a>
                                     </Col>
@@ -63,8 +77,9 @@ function homePage() {
                                     <Col xs={8} sm={9} md={9}>
                                         <a href="https://youtu.be/yiXHOBM_cjs" target="_blank" rel="noopener noreferrer"><Card.Body className='tileBody'>
                                             <Card.Title className='tileHeading'>Preparedness Videos</Card.Title>
-                                            <Card.Text className='anchor' >
-                                                Learn how to prepare for disasters with Ready’s preparedness videos and public service announcements
+                                            <Card.Text className='anchor'>
+                                                Learn how to prepare for emergencies through trusted preparedness videos and
+                                                public service announcements designed to help you act with confidence.
                                             </Card.Text>
                                         </Card.Body></a>
                                     </Col>
@@ -86,8 +101,9 @@ function homePage() {
                                     <Col xs={8} sm={9} md={9}>
                                         <a href="https://youtu.be/9yLd2AjGzYI" target="_blank" rel="noopener noreferrer"><Card.Body className='tileBody'>
                                             <Card.Title className='tileHeading'>Emergency Alerts</Card.Title>
-                                            <Card.Text className='anchor' >
-                                                Wireless emergency alerts allow officials to provide the public with life-saving information quickly.
+                                            <Card.Text className='anchor'>
+                                                Emergency alerts provide timely, life-saving information during critical situations,
+                                                helping communities respond quickly and safely to take immediate actions.
                                             </Card.Text>
                                         </Card.Body></a>
                                     </Col>
@@ -105,8 +121,9 @@ function homePage() {
                                     <Col xs={8} sm={9} md={9}>
                                         <a href="https://youtu.be/TybjwGLHA88" target="_blank" rel="noopener noreferrer"><Card.Body className='tileBody'>
                                             <Card.Title className='tileHeading'>Make a Plan</Card.Title>
-                                            <Card.Text className='anchor' >
-                                                Be Prepared. Make an emergency plan today and practice it.
+                                            <Card.Text className='anchor'>
+                                                Planning ahead can save lives. Create an emergency plan today and practice it
+                                                regularly so you know exactly what to do when it matters most.
                                             </Card.Text>
                                         </Card.Body></a>
                                     </Col>
@@ -127,8 +144,9 @@ function homePage() {
                                     <Col xs={8} sm={9} md={9}>
                                         <a href="https://youtu.be/KKN7Ewht1DQ" target="_blank" rel="noopener noreferrer"><Card.Body className='tileBody'>
                                             <Card.Title className='tileHeading'>Build a Kit</Card.Title>
-                                            <Card.Text className='anchor' >
-                                                Make sure your emergency kitstocked with the right items.
+                                            <Card.Text className='anchor'>
+                                                A well-prepared emergency kit ensures you have essential supplies when access
+                                                to services is limited. Make sure your kit is ready before an emergency occurs.
                                             </Card.Text>
                                         </Card.Body></a>
                                     </Col>
@@ -146,8 +164,9 @@ function homePage() {
                                     <Col xs={8} sm={9} md={9}>
                                         <a href="https://youtu.be/uxcb9s0dpJg" target="_blank" rel="noopener noreferrer"><Card.Body className='tileBody'>
                                             <Card.Title className='tileHeading'>Get Vaccinated</Card.Title>
-                                            <Card.Text className='anchor' >
-                                                COVID-19 vaccines are free and available to anyone five and older who wants one.
+                                            <Card.Text className='anchor'>
+                                                Vaccination is a key step in protecting yourself and others during public health
+                                                emergencies. Safe and effective vaccines are available to those who need them.
                                             </Card.Text>
                                         </Card.Body></a>
                                     </Col>

@@ -1,22 +1,26 @@
-li a, div a{
+li a,
+div a {
     text-decoration: none;
     color: white;
 }
-.list-unstyled{
+
+.list-unstyled {
     color: white;
 }
-.footerBackground{
+
+.footerBackground {
     background-color: #e29f95;
     /* color: white; */
     color: black;
 }
 
-.copyright{
+.copyright {
     padding-bottom: 10px;
     font-size: 16px;
 }
-.socialIcons{
-  font-size: 30px;
-  text-decoration: none;
-  padding-bottom: 10px;
+
+.socialIcons {
+    font-size: 30px;
+    text-decoration: none;
+    padding-bottom: 10px;
 }

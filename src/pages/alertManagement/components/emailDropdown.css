@@ -1,59 +1,164 @@
-.columnDropdown{
+/* ===============================
+   Page & Layout
+================================ */
+.columnDropdown {
     text-align: center;
-    font-size: Roboto;
-}
-
-.goBack {
-    background-color: #FC816D;
-    border-radius: 10px;
-    height: 30px;
-    width: 90px;
-    color: white;
-    margin: 3% 0 127px 0;
-    border: none;
-    font-size: 12px;
     font-family: Roboto;
 }
 
-.goBack:hover{
-    background-color: #f8dddd;
-    color: #FC816D ;
-    border-color: rgb(83, 83, 83);
+/* ===============================
+   Header (matches About / Charts)
+================================ */
+.emailHeader {
+    text-align: center;
+    margin: 50px 0 30px;
 }
-.dept{
-    margin: 0 25% 0 25% ;
-    padding:5px 10px 5px 10px;
-    background-color: white;
-    justify-content: center;
-    text-align: left;
-}   
 
-.sendHeader{
-    color: rgb(0, 0, 0);
-    font-family: Roboto;
-    font-weight: 300;
+.emailHeader h1 {
     font-size: 38px;
-    padding: 5% 0 5% 0;
+    font-weight: 500;
+    color: #2C2424;
+    margin-bottom: 10px;
+}
+
+.emailUnderline {
+    width: 80px;
+    height: 4px;
+    margin: 0 auto;
+    background: linear-gradient(to right, #FFC0B1, #ffab99);
+    border-radius: 2px;
+}
+
+.emailSubtext {
+    color: #6A6A6A;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+/* ===============================
+   Main Card
+================================ */
+.emailCard {
+    max-width: 1500px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px 40px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ===============================
+   Dropdown Section
+================================ */
+.selectRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
 }
 
 .selectBy {
-    color :rgb(0, 0, 0);
-    font-family: Roboto;
-    font-weight: thin;
-    font-size: 22px;
-    align-items: center;
+    font-size: 18px;
+    font-weight: 400;
+    color: #2C2424;
 }
 
 .dropDown {
-    background-color: #FC816D;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    color:white;
-    border-radius: 5px;
+    padding: 8px 14px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    min-width: 200px;
+    cursor: pointer;
+}
+
+.dropDown:focus {
+    outline: none;
+    border-color: #FC816D;
 }
 
 .optionName {
-    background-color: #f1f1f1;
-    border-color: white;
-    color:black;
+    color: #2C2424;
+}
+
+/* ===============================
+   Department / Location Blocks
+================================ */
+.dept {
+    margin: 25px auto;
+    padding: 20px;
+    max-width: 400px;
+    background-color: #F9F0F0;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.dept label {
+    font-size: 14px;
+    color: #2C2424;
+}
+
+.checkbox {
+    accent-color: #FC816D;
+}
+
+/* ===============================
+   Individual (Table Section)
+================================ */
+.individual {
+    margin-top: 30px;
+}
+
+/* ===============================
+   Action Buttons
+================================ */
+.emailActions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.primaryBtn {
+    background-color: #FC816D;
+    color: #ffffff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.primaryBtn:hover {
+    background-color: #ff9c88;
+}
+
+.secondaryBtn {
+    background-color: #f5f5f5;
+    color: #2C2424;
+    border: 1px solid #ccc;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.secondaryBtn:hover {
+    background-color: #eeeeee;
+}
+
+/* ===============================
+   Legacy Cleanup (Safe to keep)
+================================ */
+.sendHeader {
+    display: none;
+}
+
+.goBack {
+    display: none;
 }

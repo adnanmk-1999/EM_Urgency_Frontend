@@ -1,3 +1,20 @@
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+.appLayout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContent {
+  flex: 1;
+}
+
 .addButton {
   text-align: right;
   padding: 20px 50px 0px 0px;
@@ -52,7 +69,7 @@
 
 
 .link:hover {
- background-color: #FFC0B1;
+  background-color: #FFC0B1;
   color: white;
 }
 
@@ -64,19 +81,19 @@
   font-size: 16px;
 }
 
-.dropNav{
+.dropNav {
   text-align: center;
   text-decoration: none;
   color: rgb(20, 20, 20);
   padding: 1% 16px 0px 16px;
 }
 
-.dropNav:hover{
+.dropNav:hover {
   background-color: #FFC0B1;
   color: white;
 }
 
-.linkItem{
+.linkItem {
   float: left;
   color: rgb(20, 20, 20);
   padding: 2%;
@@ -89,7 +106,7 @@
   color: white;
 }
 
-.linkItemContent{
+.linkItemContent {
   color: rgb(20, 20, 20);
   padding: 0%;
   width: 100%;
@@ -110,30 +127,36 @@
 }
 
 .loginForm {
-  padding: 5% 25% 0 25% ;
+  padding: 5% 25% 0 25%;
 }
 
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #2C2424;
   font-family: Roboto;
 }
 
-.logo1{
+.logo1 {
   width: 90px;
   margin: none;
   padding: none;
 }
 
-.paginationTotal{
+.paginationTotal {
   font-family: Roboto;
   font-size: 20px;
 }

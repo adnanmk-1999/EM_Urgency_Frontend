@@ -1,69 +1,101 @@
 import React, { useState, useEffect } from 'react';
-import MaterialTable from 'material-table'
-import { AddIcon } from '@material-ui/icons/Add';
+import MaterialTable from 'material-table';
+import AddIcon from '@material-ui/icons/Add';
 import RespondBox from './components/respondBox';
-import axios from 'axios';
-import axiosConfig from '../../helpers/axiosConfig';
+import { useNavigate } from 'react-router-dom';
 import roleController from '../../helpers/roleLogin';
 import { TablePagination, Grid, Typography, Divider } from '@material-ui/core';
+
+import axiosClient from '../../api/axiosClient';
 
 import './userResponse.css';
 
 function UserResponse() {
 
-  if (!roleController.isUser()) {
-    window.location = '/login'
-  }
+  const navigate = useNavigate();
 
+  const [alertData, setalertData] = useState([]);
 
-  const [alertData, setalertData] = useState([])
+  // ROLE GUARD (functional fix)
+  useEffect(() => {
+    if (!roleController.isUser()) {
+      navigate('/login', { replace: true });
+    }
+  }, [navigate]);
 
   const columns = [
     { title: "Sent Date", type: "date", field: "date", sorting: true, filterPlaceholder: "filter", headerStyle: { color: "#fff" }, render: row => <span>{row["date"]}</span> },
     { title: "Category", field: "categoryId", filterPlaceholder: "filter", lookup: { 1: "Alert", 2: "Event", 3: "Announcement" } },
     { title: "Subject", field: "subject", filterPlaceholder: "filter" },
     { title: "Messsage", field: "message", filterPlaceholder: "filter" },
-    { title: "Reply", field: "response", filterPlaceholder: "filter", lookup: { Pending: "Pending", Accepted: "Accepted", Rejected: "Rejected" }, render: (rowData) => <>{rowData.response === null && <div>Pending</div>}<div>{rowData.response}</div></> },
-  ]
+    {
+      title: "Reply",
+      field: "response",
+      filterPlaceholder: "filter",
+      lookup: { Pending: "Pending", Accepted: "Accepted", Rejected: "Rejected" },
+      render: (rowData) => (
+        <>
+          {rowData.response === null && <div>Pending</div>}
+          <div>{rowData.response}</div>
+        </>
+      )
+    },
+  ];
 
+  // FETCH USER ALERTS
   useEffect(() => {
-    axios(axiosConfig.getConfig('http://localhost:4000/users/alerts')) //gets data from api
+    axiosClient
+      .get('/users/alerts')
       .then(response => {
-        setalertData(response.data.data); //save only 'data' in response to the state
+        setalertData(response.data.data);
       })
-      .catch((error) => {
-        alert('Session Timed out login again')
-        window.location = '/login'
+      .catch(() => {
+        alert('Session Timed out login again');
+        localStorage.clear();
+        navigate('/login', { replace: true });
       });
-  }, []);
+  }, [navigate]);
 
-
-  //State to store the message to be displayed in the message box, which is in another component
+  // RESPONSE DIALOG STATE
   const [message, setMessage] = useState();
   const [responseId, setresponseId] = useState();
   const [openDialogue, setOpenDialogue] = useState(false);
 
   function handleClickOpen(props, event) {
     props.action.onClick(event, props.data);
-    setMessage(props.data.message)
-    setresponseId(props.data.id)
-    setOpenDialogue(true)
+    setMessage(props.data.message);
+    setresponseId(props.data.id);
+    setOpenDialogue(true);
   }
 
   return (
     <>
       <div className=''>
-        {openDialogue && <RespondBox content={message} responseId={responseId} handleClose={() => setOpenDialogue(false)} />}
-        <div className="App">
+        {openDialogue && (
+          <RespondBox
+            content={message}
+            responseId={responseId}
+            handleClose={() => setOpenDialogue(false)}
+          />
+        )}
 
+        <div className="App">
           <MaterialTable
             title="My Alerts"
             columns={columns}
             data={alertData}
+            localization={{
+              toolbar: {
+                searchPlaceholder: "Search by subject, category, or message",
+              },
+            }}
             options={{
               sorting: true,
               search: true,
               searchFieldAlignment: "right",
+              searchFieldStyle: {
+                width: "500px",
+              },
               searchAutoFocus: true,
               searchFieldVariant: "standard",
               filtering: true,
@@ -87,12 +119,11 @@ function UserResponse() {
             }}
 
             actions={[
-
               {
                 icon: "reply",
                 tooltip: 'Sent response',
                 onClick: (data, rowData) => {
-                  console.log("row data is", rowData)
+                  console.log("row data is", rowData);
                 }
               }
             ]}
@@ -100,15 +131,25 @@ function UserResponse() {
             components={{
               Action: props => (
                 <>
-                  {props.data.response === null && <button type='button' className='respondBoxButton' variant="outlined" onClick={(event) => handleClickOpen(props, event)} >
-                    Respond
-                  </button>
-                  }
+                  {props.data.response === null && (
+                    <button
+                      type='button'
+                      className='respondBoxButton'
+                      variant="outlined"
+                      onClick={(event) => handleClickOpen(props, event)}
+                    >
+                      Respond
+                    </button>
+                  )}
                 </>
               ),
               Pagination: (props) => <>
                 <Grid container style={{ padding: 15 }}>
-                  <Grid sm={12} item align="right"><Typography variant="subtitle2" className='paginationTotal' >Total Messages : {props.count}</Typography></Grid>
+                  <Grid sm={12} item align="right">
+                    <Typography variant="subtitle2" className='paginationTotal'>
+                      Total Messages : {props.count}
+                    </Typography>
+                  </Grid>
                 </Grid>
                 <Divider />
                 <TablePagination {...props} />
@@ -122,11 +163,7 @@ function UserResponse() {
         </div>
       </div>
     </>
-
   );
 }
-
-
-
 
 export default UserResponse;

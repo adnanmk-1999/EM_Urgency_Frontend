@@ -10,6 +10,10 @@
     font-size: 30px;
 }
 
+.textImage {
+    margin-top: 20px;
+}
+
 .aboutImage {
     width: stretch;
     background-repeat: no-repeat;
@@ -42,10 +46,100 @@
 }
 
 .cardTextAbout {
-    display: flex; 
+    display: flex;
     justify-content: center;
     text-align: justify;
     font-family: Roboto;
     font-size: 16px;
 }
 
+/* Main content */
+.aboutContent {
+    margin-top: 70px;
+    margin-bottom: 80px;
+}
+
+/* Section titles */
+.sectionTitle {
+    font-family: Roboto;
+    font-size: 28px;
+    font-weight: 500;
+    color: #2c2424;
+    margin-bottom: 15px;
+}
+
+.sectionText {
+    font-family: Roboto;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #444;
+}
+
+.featureTitle {
+    font-family: Roboto;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #2C2424;
+}
+
+.whyList {
+    font-family: Roboto;
+    font-size: 18px;
+    color: #444;
+    line-height: 1.8;
+    padding-left: 20px;
+}
+
+.missionBox {
+    background: #f9f0f0;
+    border-left: 4px solid #e31836;
+    padding: 22px 26px;
+    margin-top: 30px;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #333;
+    max-width: 900px;
+}
+
+/* Divider */
+.sectionDivider {
+    height: 1px;
+    background: #e0e0e0;
+    margin: 70px 0;
+}
+
+/* What we do section */
+.whatWeDoSection {
+    margin-top: 20px;
+}
+
+.featureBox {
+    padding: 20px 10px;
+}
+
+.featureBox h4 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #2c2424;
+    margin-bottom: 10px;
+}
+
+.featureBox p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* Why section */
+
+.whyBox ul {
+    margin-top: 30px;
+    padding-left: 40px;
+}
+
+.whyBox li {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    color: #444;
+}
