@@ -233,7 +233,7 @@ This is the easiest and most reliable method, especially on systems where Node.j
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/EM_Urgency_Frontend
+git clone https://github.com/adnanmk-1999/EM_Urgency_Frontend
 cd EM_Urgency_Frontend
 ```
 
