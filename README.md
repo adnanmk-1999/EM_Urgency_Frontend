@@ -237,17 +237,16 @@ git clone https://github.com/adnanmk-1999/EM_Urgency_Frontend
 cd EM_Urgency_Frontend
 ```
 
----
 
 ### 2️⃣ Create the `.env` File
 
 ```env
+REACT_APP_PORT=3000  
 REACT_APP_API_BASE_URL=http://localhost:4000
 ```
 
 Replace this URL with your backend’s deployed address if applicable.
 
----
 
 ### 3️⃣ Build and Run the Docker Container
 
@@ -261,7 +260,6 @@ The application will be available at:
 http://localhost:3000
 ```
 
----
 
 ## 💻 Running the Frontend Locally (Manual Method)
 
