@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <img src="docs/ui-demo.gif" alt="EM-Urgency UI Demo" width="800"/>
+  <img src="docs/ui-overview.gif" alt="EM-Urgency UI Demo" width="800"/>
 </p>
 
 
@@ -48,7 +48,7 @@ The system is built with a modern, role-based architecture:
 By combining a user-friendly frontend with a robust backend and integrated email notifications, EM-Urgency provides a reliable platform for improving organizational preparedness and emergency response workflows.
 
 <p align="center">
-  <img src="docs/em-urgency-demo.gif" alt="EM-Urgency Demo" width="850"/>
+  <img src="docs/about-us.png" alt="EM-Urgency Demo" width="400"/>
 </p>
 
 
@@ -94,12 +94,20 @@ The backend is organized into a modular structure consisting of:
 - **Middleware**  
   Provides authentication, authorization, and role-based access control to protect sensitive routes.
 
+  <p align="center">
+  <img src="docs/erd-schema.png" alt="EM Urgency ERD" width="900"/>
+</p>
+
 Overall, the backend architecture of EM-Urgency emphasizes **modularity, clarity, and reliability**, making it suitable for both academic use and real-world deployment scenarios.
 
 
 # ✨ Features
 
 EM-Urgency provides a role-based feature set designed to support efficient emergency communication, response tracking, and administrative oversight. The application distinguishes clearly between **Admin** and **User** roles, ensuring controlled access and a streamlined experience for each user group.
+
+<p align="center">
+  <img src="docs/features.gif" alt="Features Overview GIF" width="800"/>
+</p>
 
 
 ## 👨‍💼 Admin Features
@@ -121,6 +129,10 @@ Admins can send alerts to:
 
 This allows precise targeting of recipients based on organizational structure.
 
+<p align="center">
+  <img src="docs/admin-alert.gif" alt="Alert Create GIF" width="800"/>
+</p>
+
 ### 📧 Email Notification System
 - Automatic email notifications sent to selected recipients
 - Emails include alert details and a response link
@@ -141,6 +153,10 @@ This allows precise targeting of recipients based on organizational structure.
 - Date-based filtering for historical insights
 - Interactive charts for better administrative decision-making
 
+<p align="center">
+  <img src="docs/response-bar-preaccept.gif" alt="Before Response GIF" width="800"/>
+</p>
+
 ### 🛡️ Role-Based Access Control
 - Admin-only access to alert creation, recipient selection, and analytics
 - Protected routes to prevent unauthorized actions
@@ -160,23 +176,28 @@ Users interact with alerts sent by administrators and provide responses.
 - Responses captured via a dedicated response dialog
 - Prevents multiple or duplicate responses
 
+<p align="center">
+  <img src="docs/user-respond.gif" alt="User Respond GIF" width="800"/>
+</p>
+
 ### 📬 Email-Based Interaction
 - Receive alerts directly via email
 - Secure link redirects users to the application login page
 - Ensures accessibility even when users are not actively logged in
+
+<p align="center">
+  <img src="docs/email.png" alt="Email Template" width="800"/>
+</p>
 
 ### 🔐 Secure Authentication
 - Login using username and password
 - Google Sign-In support for simplified authentication
 - Session handling with JWT-based security
 
+<p align="center">
+  <img src="docs/response-bar-postaccept.gif" alt="After Response GIF" width="800"/>
+</p>
 
-## ⚙️ General Application Features
-
-- Clean, responsive user interface built with React
-- Consistent UI styling across pages and dashboards
-- Error handling and user feedback via notifications
-- Modular and extensible architecture for future enhancements
 
 Overall, EM-Urgency provides a balanced feature set that supports **rapid emergency communication**, **accountability through response tracking**, and **administrative insight through analytics**, making it suitable for organizational and institutional use.
 
